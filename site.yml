@@ -1,0 +1,22 @@
+---
+# This playbook deploys the whole application stack in this site.  
+
+- name: Configure F&C on RaspberryPi
+  hosts: fc
+  become: yes
+  become_method: sudo
+
+  roles:
+    - role: mikolak.raspi-config
+      # perform full update+upgrade
+      raspi_config_update_packages: yes
+      # set global locale
+      raspi_config_locale: en_US.UTF8
+      # set timezone
+      raspi_config_timezone: Asia/Tokyo
+      # set hostname
+      raspi_config_hostname: fcpi
+      # ensure camera support is on - CURRENTLY UNVERIFIED
+      raspi_config_enable_camera: no
+    - role: willshersystems.sshd
+

@@ -1,0 +1,7 @@
+---
+# Variables listed here are applicable to the ns group
+sshd:
+    PasswordAuthentication: no
+    UseDNS: no
+
+
